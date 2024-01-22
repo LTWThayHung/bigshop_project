@@ -1,31 +1,25 @@
 package control;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ProductDAO;
-import entity.Account;
-import entity.Products;
 
 /**
- * Servlet implementation class ManagerProductControl
+ * Servlet implementation class DeleteControl
  */
-@WebServlet("/manager")
-public class ManagerProductControl extends HttpServlet {
+@WebServlet("/delete")
+public class DeleteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManagerProductControl() {
+    public DeleteControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,17 +28,13 @@ public class ManagerProductControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Products> list = new ArrayList<Products>();
-		ProductDAO daoProduct = new ProductDAO();
 		
-		HttpSession session = request.getSession();
-		Account acc = (Account) session.getAttribute("acc");
-		int id = acc .getuID();
+		String pid = request.getParameter("pid");
+		ProductDAO pDAO = new ProductDAO();
+		pDAO.deleteProduct(pid);
+		response.sendRedirect("manager");
 		
 		
-		list =  daoProduct.getProductBySellID(id);
-		request.setAttribute("listP", list);
-		request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);
 	}
 
 	/**

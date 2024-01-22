@@ -105,10 +105,10 @@ function hideURLbar(){ window.scrollTo(0,1); }
 	<div class="head-t">
 		<ul class="card">
 		<c:if test="${sessionScope.acc.isAdmin == 1 }">
-			<li><a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i>Manager Account</a></li>
+			<li><a href="manager"><i class="fa fa-user" aria-hidden="true"></i>Manager Account</a></li>
 			</c:if>
 			<c:if test="${sessionScope.acc.isSell == 1 }">
-			<li><a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i>Manager Product</a></li>
+			<li><a href="manager"><i class="fa fa-user" aria-hidden="true"></i>Manager Product</a></li>
 			</c:if>
 			<c:if test="${sessionScope.acc !=  null}">
 				<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Hello

@@ -167,8 +167,8 @@ function hideURLbar(){ window.scrollTo(0,1); }
 				<h3>It is a long established fact that a reader will be
 					distracted by the readable</h3>
 				<div class="search-form">
-					<form action="#" method="post">
-						<input type="text" placeholder="Search..." name="Search...">
+					<form action="SearchControl" method="post">
+						<input type="text" placeholder="Search..." name="txtSearch">
 						<input type="submit" value=" ">
 					</form>
 				</div>
@@ -221,7 +221,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
 											</div>
 											<div class="mid-2">
 												<p>
-													<label>$${list4Pro.price} </label><em class="item_price">$${list4Pro.discount_price}</em>
+													<label></label><em class="item_price">$${list4Pro.discount_price}</em>
 												</p>
 												<div class="block">
 													<div class="starbox small ghosting"></div>
@@ -270,7 +270,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
 											<h3>${list4Pro.title}</h3>
 											<p class="in-para">${list4Pro.description}</p>
 											<div class="price_single">
-												<span class="reducedfrom "><del>$${list4Pro.price}
+												<span class="reducedfrom "><del>
 													</del>$${list4Pro.discount_price}</span>
 
 												<div class="clearfix"></div>
@@ -422,7 +422,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
 								</div>
 								<div class="mid-2">
 									<p>
-										<label>$${o.price} </label><em class="item_price">$${o.discount_price}</em>
+										<label></label><em class="item_price">$${o.discount_price}</em>
 									</p>
 									<div class="block">
 										<div class="starbox small ghosting"></div>
@@ -465,7 +465,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
 										<h3>${o.title}</h3>
 										<p class="in-para">${o.description}</p>
 										<div class="price_single">
-											<span class="reducedfrom "><del>$${o.price} </del>$${o.discount_price}</span>
+											<span class="reducedfrom "><del></del>$${o.discount_price}</span>
 
 											<div class="clearfix"></div>
 										</div>

@@ -45,8 +45,9 @@ public class LoginControl extends HttpServlet {
 		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("acc",a);
+			session.setMaxInactiveInterval(300);
 			//chuyen trang k can truyen du lieu
-			response.sendRedirect("index.jsp");
+			response.sendRedirect(request.getContextPath());
 		}
 	}
 

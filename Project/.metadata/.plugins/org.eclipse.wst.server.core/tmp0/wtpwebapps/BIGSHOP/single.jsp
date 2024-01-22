@@ -191,7 +191,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
 
 						<div class="pr-single">
 							<p class="reduced ">
-								<del>$${details.price}0</del>
+								<del></del>
 								$${details.discount_price}
 							</p>
 						</div>

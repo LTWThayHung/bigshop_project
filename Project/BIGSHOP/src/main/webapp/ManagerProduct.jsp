@@ -51,7 +51,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items = "${list4Product}" var="list">
+                        <c:forEach items = "${listP}" var="o">
                             <tr>
                                 <td>
                                     <span class="custom-checkbox">
@@ -59,16 +59,16 @@
                                         <label for="checkbox1"></label>
                                     </span>
                                 </td>
-                                <td>1</td>
-                                <td>${list.title}</td>
+                                <td>${o.id}</td>
+                                <td>${o.title}</td>
                                 <td>
-                                    <img src="${list.image}">
+                                    <img src="${o.image}">
                                 </td>
-                                <td>list.discount_price</td>
+                                <td>$${o.discount_price}</td>
                                 <td>
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
+                                    <a href=""  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="delete?pid=${o.id }" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>	
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -173,10 +173,10 @@
             </div>
         </div>
         <!-- Delete Modal HTML -->
-        <div id="deleteEmployeeModal" class="modal fade">
+       <!--  <div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form action="/delete">
                         <div class="modal-header">						
                             <h4 class="modal-title">Delete Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -192,7 +192,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </a>
     <script src="js/manager.js" type="text/javascript"></script>
 </body>
