@@ -1,9 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,20 +10,18 @@ import javax.servlet.http.HttpSession;
 
 import dao.ProductDAO;
 import entity.Account;
-import entity.Category;
-import entity.Products;
 
 /**
- * Servlet implementation class ManagerProductControl
+ * Servlet implementation class AddControl
  */
-@WebServlet("/manager")
-public class ManagerProductControl extends HttpServlet {
+@WebServlet("/add")
+public class AddControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManagerProductControl() {
+    public AddControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,20 +30,19 @@ public class ManagerProductControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Products> list = new ArrayList<Products>();
-		List<Category> listAllCategory = new ArrayList<Category>();
-		ProductDAO daoProduct = new ProductDAO();
+		String pid = request.getParameter("pid");
+		String pimage = request.getParameter("image");
+		String pprice = request.getParameter("price");
+		String ptitle = request.getParameter("title");
+		String pdescription = request.getParameter("description");
 		
 		HttpSession session = request.getSession();
 		Account acc = (Account) session.getAttribute("acc");
-		int id = acc .getuID();
+		int sid = acc .getuID();
 		
-		
-		list =  daoProduct.getProductBySellID(id);
-		listAllCategory = daoProduct.getAllCategory();
-		request.setAttribute("listAllCategory", listAllCategory);
-		request.setAttribute("listP", list);
-		request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);
+		ProductDAO dao = new ProductDAO();
+		dao.insertProduct(pid, null, ptitle, pprice, pimage, pdescription, sid);
+		response.sendRedirect("manager");
 	}
 
 	/**

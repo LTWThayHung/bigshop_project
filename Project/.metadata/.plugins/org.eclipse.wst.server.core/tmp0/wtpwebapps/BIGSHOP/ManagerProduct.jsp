@@ -66,7 +66,7 @@
                                 </td>
                                 <td>$${o.discount_price}</td>
                                 <td>
-                                    <a href=""  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="loadProduct?pid=${o.id }"  class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="delete?pid=${o.id }" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>	
                             </tr>
@@ -100,8 +100,8 @@
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Name</label>
-                                <input name="name" type="text" class="form-control" required>
+                                <label>ID</label>
+                                <input name="pid" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
@@ -122,8 +122,8 @@
                             <div class="form-group">
                                 <label>Category</label>
                                 <select name="category" class="form-select" aria-label="Default select example">
-                                    <c:forEach begin="1" end="3" var="o">
-                                        <option value="1">Giày Adidas</option>
+                                    <c:forEach items ="${listAllCategory}" var="o">
+                                        <option value="${o.cid}">${o.cname }</option>
                                     </c:forEach>
                                 </select>
                             </div>

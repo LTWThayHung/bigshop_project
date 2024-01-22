@@ -4,29 +4,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ProductDAO;
-import entity.Account;
 import entity.Category;
 import entity.Products;
 
 /**
- * Servlet implementation class ManagerProductControl
+ * Servlet implementation class LoadProduct
  */
-@WebServlet("/manager")
-public class ManagerProductControl extends HttpServlet {
+@WebServlet("/loadProduct")
+public class LoadProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManagerProductControl() {
+    public LoadProduct() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,20 +34,18 @@ public class ManagerProductControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Products> list = new ArrayList<Products>();
+		String pID = request.getParameter("pid");
+		
+		ProductDAO productDAO = new ProductDAO();
+		Products p = productDAO.getProductByID(pID);
+		
+		request.getSession().setAttribute("detail", p);
 		List<Category> listAllCategory = new ArrayList<Category>();
-		ProductDAO daoProduct = new ProductDAO();
-		
-		HttpSession session = request.getSession();
-		Account acc = (Account) session.getAttribute("acc");
-		int id = acc .getuID();
-		
-		
-		list =  daoProduct.getProductBySellID(id);
-		listAllCategory = daoProduct.getAllCategory();
+		listAllCategory = productDAO.getAllCategory();
 		request.setAttribute("listAllCategory", listAllCategory);
-		request.setAttribute("listP", list);
-		request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Edit.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	/**
